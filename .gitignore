@@ -6,3 +6,6 @@
 
 # ignore DS_Stores
 *.DS_Store
+
+# ignore agent pickle files
+dwind_os/input_agents/*.pkl
