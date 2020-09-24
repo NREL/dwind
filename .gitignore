@@ -1,0 +1,8 @@
+# ignore thumbs.db
+*.db
+
+# ignore compiled python
+*.pyc
+
+# ignore DS_Stores
+*.DS_Store
