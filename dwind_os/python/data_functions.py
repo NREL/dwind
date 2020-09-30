@@ -4,7 +4,7 @@ Functions for pulling data
 import psycopg2 as pg
 import numpy as np
 import pandas as pd
-import datetime
+from datetime import datetime
 import os
 import decorators
 import utility_functions as utilfunc
