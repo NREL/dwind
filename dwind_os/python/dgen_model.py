@@ -164,7 +164,6 @@ def main():
                 #==========================================================================================================
                 # MUTATE AGENTS
                 #==========================================================================================================
-                scenario_settings.model_years = [2014]
                 for i, year in enumerate(scenario_settings.model_years):
 
                     logger.info('\tWorking on {}'.format(year))
