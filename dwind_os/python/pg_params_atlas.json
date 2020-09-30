@@ -1,5 +1,5 @@
 {	
-	"dbname": "dgen_db",
+	"dbname": "dwind_db",
  	"host": "localhost",
 	"port": "5432",
 	"user": "postgres",
