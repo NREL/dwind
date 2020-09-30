@@ -11,11 +11,6 @@ model_path = os.path.dirname(os.path.abspath(__file__))
 pg_params_file = 'pg_params_atlas.json'
 
 #==============================================================================
-#   path to load file corresponding to the state-sector scenario you're running
-#==============================================================================
-load_path = '/Users/kmccabe/Projects/os_dgen/OS_dGen_Beta_Load_Meta_Data/res/state_data/state_timeseries/DE_timeseries.parquet'
-
-#==============================================================================
 #   model start year
 #==============================================================================
 start_year = 2014
