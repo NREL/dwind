@@ -227,25 +227,17 @@ def calc_system_size_and_performance_pv(agent, sectors, rate_switch_table=None):
     # PV
     pv = dict()
 
-    if any('res' in ele for ele in sectors):
-        #load_profile_df = agent_mutation.elec.get_and_apply_residential_agent_load_profiles(con, 'res', agent) # *** for full release, don't uncomment ***
-        de_ts = pd.read_parquet(model_settings.load_path)
-        s = str(agent.loc['bldg_id'])
-
-    elif any('com' in ele for ele in sectors):
-        #load_profile_df = agent_mutation.elec.get_and_apply_commercial_agent_load_profiles(con, 'com', agent) # *** for full release, don't uncomment ***
-        de_ts = pd.read_parquet(model_settings.load_path)
-        de_ts.rename(columns=lambda t: int(t.strip()), inplace=True)
-        s = agent.loc['bldg_id']
-
-    pv['consumption_hourly'] = pd.Series(de_ts[s].to_list())
-    #pv['consumption_hourly'] = pd.Series(load_profile_df['consumption_hourly']).iloc[0] # *** for full release, don't uncomment ***
+    # Extract load profile after scaling hourly load to annual total
+    load_profile_df = agent_mutation.elec.get_and_apply_agent_load_profiles(con, agent)
+    pv['consumption_hourly'] = pd.Series(load_profile_df['consumption_hourly']).iloc[0]
+    del load_profile_df
 
     # Using the scale offset factor of 1E6 for capacity factors
     norm_scaled_pv_cf_profiles_df = agent_mutation.elec.get_and_apply_normalized_hourly_resource_solar(con, agent)
     pv['generation_hourly'] = pd.Series(norm_scaled_pv_cf_profiles_df['solar_cf_profile'].iloc[0]) /  1e6
     del norm_scaled_pv_cf_profiles_df
     
+    # Calculate normalized annual energy production
     agent.loc['naep'] = float(np.sum(pv['generation_hourly']))
 
     # Battwatts
@@ -259,6 +251,7 @@ def calc_system_size_and_performance_pv(agent, sectors, rate_switch_table=None):
         utilityrate = utility.default("PVWattsBatteryResidential")
     else:
         utilityrate = utility.default("PVWattsBatteryCommercial")
+        
 
     ######################################
     ###--------- UTILITYRATE5 ---------###
@@ -658,19 +651,10 @@ def calc_financial_performance_wind(agent, sectors, rate_switch_table=None):
     model_settings = settings.init_model_settings()
     con, cur = utilfunc.make_con(model_settings.pg_conn_string, model_settings.role)
 
-    if any('res' in ele for ele in sectors):
-        #load_profile_df = agent_mutation.elec.get_and_apply_residential_agent_load_profiles(con, 'res', agent) # *** for full release, don't uncomment ***
-        de_ts = pd.read_parquet(model_settings.load_path)
-        s = str(agent.loc['bldg_id'])
-
-    elif any('com' in ele for ele in sectors):
-        #load_profile_df = agent_mutation.elec.get_and_apply_commercial_agent_load_profiles(con, 'com', agent) # *** for full release, don't uncomment ***
-        de_ts = pd.read_parquet(model_settings.load_path)
-        de_ts.rename(columns=lambda t: int(t.strip()), inplace=True)
-        s = agent.loc['bldg_id']
-
-    consumption_hourly = pd.Series(de_ts[s].to_list())
-    # consumption_hourly = pd.Series(load_profile_df['consumption_hourly']).iloc[0] # *** for full release, don't uncomment ***
+    # Extract load profile after scaling hourly load to annual total
+    load_profile_df = agent_mutation.elec.get_and_apply_agent_load_profiles(con, agent)
+    consumption_hourly = pd.Series(load_profile_df['consumption_hourly']).iloc[0]
+    del load_profile_df
 
     # Using the scale offset factor of 1E6 for capacity factors
     norm_scaled_wind_profiles_df = agent_mutation.elec.get_and_apply_normalized_hourly_resource_wind(con, agent)
