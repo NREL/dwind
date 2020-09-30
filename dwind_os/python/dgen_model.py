@@ -164,6 +164,7 @@ def main():
                 #==========================================================================================================
                 # MUTATE AGENTS
                 #==========================================================================================================
+                scenario_settings.model_years = [2014]
                 for i, year in enumerate(scenario_settings.model_years):
 
                     logger.info('\tWorking on {}'.format(year))
@@ -263,7 +264,7 @@ def main():
                         agents.on_frame(agent_mutation.elec.apply_market_last_year, market_last_year_df)
 
                     # Calculate diffusion based on economics and bass diffusion
-                    agents.df, market_last_year_df = diffusion_functions_elec.calc_diffusion(agents.df, is_first_year, bass_params, year)
+                    agents.df, market_last_year_df = diffusion_functions_elec.calc_diffusion(agents.df, is_first_year, bass_params, year, scenario_settings.techs)
 
                     # Estimate total generation
                     agents.on_frame(agent_mutation.elec.estimate_total_generation)

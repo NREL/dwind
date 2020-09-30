@@ -24,7 +24,7 @@ logger = utilfunc.get_logger()
 
 
 @decorators.fn_timer(logger = logger, tab_level = 2, prefix = '')
-def calc_diffusion(df, is_first_year, bass_params, year,
+def calc_diffusion(df, is_first_year, bass_params, year, techs,
                            override_p_value = None, override_q_value = None, override_teq_yr1_value = None):
     """
     Calculates the market share (ms) added in the solve year. Market share must be less
@@ -73,8 +73,8 @@ def calc_diffusion(df, is_first_year, bass_params, year,
     df['batt_kw_cum'] = df['batt_kw_cum_last_year'] + df['new_batt_kw']
     df['batt_kwh_cum'] = df['batt_kwh_cum_last_year'] + df['new_batt_kwh']
     
-    # constrain state-level capacity totals to known historical values
-    if year in (2014, 2016, 2018):
+    # constrain state-level capacity totals to known historical SOLAR adoption values
+    if (year in (2014, 2016, 2018)) & ('solar' in techs):
         group_cols = ['state_abbr', 'sector_abbr', 'year']
         state_capacity_total = (df[group_cols+['system_kw_cum', 'agent_id']].groupby(group_cols)
                                                                             .agg({'system_kw_cum':'sum', 'agent_id':'count'})
