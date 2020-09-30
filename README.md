@@ -55,13 +55,13 @@ After cloning this repository and installing (and running) Docker as well as Ana
 ```
    $ docker container ls
    $ docker exec -it <container id> psql -U postgres
-   $ postgres=# CREATE DATABASE dgen_db;
+   $ postgres=# CREATE DATABASE dwind_db;
 ```
 - If you get the error ``` psql: FATAL:  the database system is starting up ``` try rerunning the docker exec command again after a minute or so because docker can take some time to initialize everything.
 
 - ```CREATE DATABASE``` will be printed when the database is created. ```\l``` will display the databases in your server.
 
-- ```postgres=# \c dgen_db``` can then be used to connect to the database.
+- ```postgres=# \c dwind_db``` can then be used to connect to the database.
 
 
 ### B. Download data (agents and database):
@@ -70,14 +70,14 @@ Download data here (<LINK TBA>) and make sure to unzip any zipped files once dow
 Next, run the following in the command line (replacing 'path_to_where_you_saved_database_file' below with the actual path where you saved your database file): 
 
 ```
-   $ cat /path_to_where_you_saved_data/dgen_db.sql | docker exec -i <container id> psql -U postgres -d dgen_db
+   $ cat /path_to_where_you_saved_data/dwind_db.sql | docker exec -i <container id> psql -U postgres -d dwind_db
 ```
 
 - Note, if on a Windows machine, use Powershell rather than command prompt. If linux commands still aren't working in Powershell, you can copy the data to the docker container and then load the data by running:
 
 ```
-   $ docker cp /path_to_where_you_saved_data/dgen_db.sql <container id>:/dgen_db.sql
-   $ docker exec -i <container id> psql -U postgres -d dgen_db -f dgen_db.sql
+   $ docker cp /path_to_where_you_saved_data/dwind_db.sql <container id>:/dwind_db.sql
+   $ docker exec -i <container id> psql -U postgres -d dwind_db -f dwind_db.sql
 ```
 
 - Backing up the database will likely take 45-60 minutes. 
