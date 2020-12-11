@@ -75,7 +75,7 @@ After cloning this repository and installing (and running) Docker as well as Ana
 
 
 ### B. Download data (agents and database):
-Download data from the publicly available [Box folder](https://nrel.app.box.com/folder/123159108851). Make sure to unzip any zipped files once downloaded. We recommend starting with the database specific to the state you are interested in. We also recommended only downloading one data file at a time to avoid a "download size exceeded" error. 
+Download data from the publicly available [Box folder](https://app.box.com/s/pk5q1wi3tekf48pk3jfwaj1zjyoihxk6). Make sure to unzip any zipped files once downloaded. We recommend starting with the database specific to the state you are interested in. We also recommended only downloading one data file at a time to avoid a "download size exceeded" error. 
 
 Each state-level or national `.zip` file will contain the database backup as well as the files for both the residential and commercial agents.
 
