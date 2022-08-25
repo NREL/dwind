@@ -1,0 +1,186 @@
+fips,county_name,state_abbr,turbine_class,wind_breakeven_cost_btm,wind_tp_btm,wind_ep_btm
+18157,Tippecanoe,IN,commercial,11305,20.0,20.0
+08005,Arapahoe,CO,commercial,17842,7.1,7.1
+21141,Logan,KY,commercial,20377,1.1,1.1
+18003,Allen,IN,commercial,18834,0.8,0.8
+01003,Baldwin,AL,commercial,16290,0.6,0.6
+21227,Warren,KY,commercial,6967,0.5,0.5
+18139,Rush,IN,commercial,24730,0.5,0.5
+21125,Laurel,KY,commercial,10212,0.4,0.4
+44009,Washington,RI,commercial,15252,0.3,0.3
+12051,Hendry,FL,commercial,7159,0.3,0.3
+21207,Russell,KY,commercial,14122,0.3,0.3
+49049,Utah,UT,commercial,6442,0.3,0.3
+08067,La Plata,CO,commercial,3031,0.3,0.0
+21111,Jefferson,KY,commercial,11126,0.3,0.3
+20155,Reno,KS,commercial,21389,0.2,0.2
+13187,Lumpkin,GA,commercial,3731,0.2,0.0
+08041,El Paso,CO,commercial,31514,0.2,0.2
+18039,Elkhart,IN,commercial,11739,0.2,0.2
+36029,Erie,NY,commercial,17675,0.2,0.2
+27137,St. Louis,MN,commercial,19248,0.2,0.2
+48141,El Paso,TX,commercial,14717,0.2,0.2
+39085,Lake,OH,commercial,18126,0.2,0.2
+37057,Davidson,NC,commercial,8290,0.2,0.2
+21173,Montgomery,KY,commercial,16646,0.1,0.1
+48201,Harris,TX,commercial,8881,0.1,0.1
+13313,Whitfield,GA,commercial,7735,0.1,0.1
+17177,Stephenson,IL,commercial,5228,0.1,0.1
+37063,Durham,NC,commercial,7095,0.1,0.1
+48439,Tarrant,TX,commercial,12603,0.1,0.1
+12011,Broward,FL,commercial,6111,0.1,0.1
+21083,Graves,KY,commercial,18545,0.1,0.1
+26115,Monroe,MI,commercial,8597,0.1,0.1
+18097,Marion,IN,commercial,22573,0.1,0.1
+47157,Shelby,TN,commercial,22152,0.1,0.1
+37119,Mecklenburg,NC,commercial,8689,0.1,0.1
+12101,Pasco,FL,commercial,4135,0.1,0.0
+33003,Carroll,NH,commercial,20704,0.1,0.1
+04013,Maricopa,AZ,commercial,4287,0.1,0.0
+13121,Fulton,GA,commercial,5347,0.1,0.1
+12095,Orange,FL,commercial,5973,0.1,0.1
+36093,Schenectady,NY,commercial,3187,0.1,0.0
+37061,Duplin,NC,commercial,13268,0.1,0.1
+06071,San Bernardino,CA,commercial,5225,0.1,0.0
+09009,New Haven,CT,commercial,20645,0.1,0.0
+12099,Palm Beach,FL,commercial,10275,0.1,0.1
+06037,Los Angeles,CA,commercial,3086,0.1,0.0
+36111,Ulster,NY,commercial,2195,0.1,0.0
+36071,Orange,NY,commercial,2474,0.1,0.0
+53033,King,WA,commercial,9566,0.1,0.1
+39049,Franklin,OH,commercial,14584,0.1,0.1
+30083,Richland,MT,commercial,12624,0.1,0.1
+36059,Nassau,NY,commercial,3435,0.1,0.0
+13077,Coweta,GA,commercial,7025,0.1,0.1
+26125,Oakland,MI,commercial,8263,0.1,0.1
+45035,Dorchester,SC,commercial,13914,0.1,0.1
+06067,Sacramento,CA,commercial,12323,0.1,0.0
+08035,Douglas,CO,commercial,16357,0.1,0.1
+01049,DeKalb,AL,commercial,9764,0.1,0.1
+48113,Dallas,TX,commercial,14884,0.1,0.1
+24005,Baltimore,MD,commercial,7608,0.1,0.1
+18095,Madison,IN,commercial,12943,0.1,0.1
+37191,Wayne,NC,commercial,15160,0.1,0.1
+01019,Cherokee,AL,commercial,5451,0.1,0.1
+53073,Whatcom,WA,commercial,8248,0.1,0.1
+29187,St. Francois,MO,commercial,16672,0.1,0.1
+18109,Morgan,IN,commercial,8641,0.1,0.1
+37051,Cumberland,NC,commercial,12069,0.0,0.0
+48459,Upshur,TX,commercial,2796,0.0,0.0
+48355,Nueces,TX,commercial,15082,0.0,0.0
+25017,Middlesex,MA,commercial,23808,0.0,0.0
+29189,St. Louis,MO,commercial,9018,0.0,0.0
+05119,Pulaski,AR,commercial,6837,0.0,0.0
+37071,Gaston,NC,commercial,6424,0.0,0.0
+16075,Payette,ID,commercial,5066,0.0,0.0
+37067,Forsyth,NC,commercial,10449,0.0,0.0
+25001,Barnstable,MA,commercial,33838,0.0,0.0
+12005,Bay,FL,commercial,8226,0.0,0.0
+27037,Dakota,MN,commercial,14565,0.0,0.0
+37027,Caldwell,NC,commercial,5775,0.0,0.0
+36091,Saratoga,NY,commercial,3898,0.0,0.0
+51820,Waynesboro,VA,commercial,4594,0.0,0.0
+39151,Stark,OH,commercial,12527,0.0,0.0
+51760,Richmond,VA,commercial,8588,0.0,0.0
+39153,Summit,OH,commercial,13529,0.0,0.0
+42043,Dauphin,PA,commercial,4202,0.0,0.0
+12127,Volusia,FL,commercial,6244,0.0,0.0
+06073,San Diego,CA,commercial,3975,0.0,0.0
+29183,St. Charles,MO,commercial,12679,0.0,0.0
+24011,Caroline,MD,commercial,21990,0.0,0.0
+45015,Berkeley,SC,commercial,14456,0.0,0.0
+23013,Knox,ME,commercial,38430,0.0,0.0
+24033,Prince George's,MD,commercial,8143,0.0,0.0
+42089,Monroe,PA,commercial,2923,0.0,0.0
+12105,Polk,FL,commercial,5814,0.0,0.0
+27015,Brown,MN,commercial,11255,0.0,0.0
+42091,Montgomery,PA,commercial,708,0.0,0.0
+06101,Sutter,CA,commercial,8037,0.0,0.0
+40051,Grady,OK,commercial,8782,0.0,0.0
+48121,Denton,TX,commercial,13985,0.0,0.0
+13261,Sumter,GA,commercial,5839,0.0,0.0
+27123,Ramsey,MN,commercial,13350,0.0,0.0
+39077,Huron,OH,commercial,21484,0.0,0.0
+13211,Morgan,GA,commercial,6574,0.0,0.0
+47149,Rutherford,TN,commercial,9738,0.0,0.0
+06059,Orange,CA,commercial,1867,0.0,0.0
+39035,Cuyahoga,OH,commercial,22167,0.0,0.0
+37037,Chatham,NC,commercial,6852,0.0,0.0
+34021,Mercer,NJ,commercial,12663,0.0,0.0
+04015,Mohave,AZ,commercial,11420,0.0,0.0
+32003,Clark,NV,commercial,5675,0.0,0.0
+01097,Mobile,AL,commercial,10765,0.0,0.0
+05067,Jackson,AR,commercial,10006,0.0,0.0
+12057,Hillsborough,FL,commercial,5494,0.0,0.0
+31079,Hall,NE,commercial,18203,0.0,0.0
+46099,Minnehaha,SD,commercial,19428,0.0,0.0
+13215,Muscogee,GA,commercial,6702,0.0,0.0
+26043,Dickinson,MI,commercial,18441,0.0,0.0
+51143,Pittsylvania,VA,commercial,8533,0.0,0.0
+37183,Wake,NC,commercial,11350,0.0,0.0
+13285,Troup,GA,commercial,5094,0.0,0.0
+12086,Miami-Dade,FL,commercial,5232,0.0,0.0
+48441,Taylor,TX,commercial,17087,0.0,0.0
+48057,Calhoun,TX,commercial,13224,0.0,0.0
+06001,Alameda,CA,commercial,11733,0.0,0.0
+55025,Dane,WI,commercial,29068,0.0,0.0
+39057,Greene,OH,commercial,15332,0.0,0.0
+51087,Henrico,VA,commercial,10007,0.0,0.0
+48501,Yoakum,TX,commercial,7816,0.0,0.0
+28059,Jackson,MS,commercial,20646,0.0,0.0
+13135,Gwinnett,GA,commercial,6126,0.0,0.0
+48039,Brazoria,TX,commercial,9333,0.0,0.0
+37081,Guilford,NC,commercial,9703,0.0,0.0
+01089,Madison,AL,commercial,14904,0.0,0.0
+06041,Marin,CA,commercial,36508,0.0,0.0
+20123,Mitchell,KS,commercial,14164,0.0,0.0
+37187,Washington,NC,commercial,5221,0.0,0.0
+19153,Polk,IA,commercial,14126,0.0,0.0
+25021,Norfolk,MA,commercial,17778,0.0,0.0
+42075,Lebanon,PA,commercial,4671,0.0,0.0
+53011,Clark,WA,commercial,5414,0.0,0.0
+42101,Philadelphia,PA,commercial,5381,0.0,0.0
+24031,Montgomery,MD,commercial,15584,0.0,0.0
+41045,Malheur,OR,commercial,3215,0.0,0.0
+13021,Bibb,GA,commercial,3855,0.0,0.0
+20209,Wyandotte,KS,commercial,20249,0.0,0.0
+48013,Atascosa,TX,commercial,9178,0.0,0.0
+37017,Bladen,NC,commercial,11014,0.0,0.0
+06011,Colusa,CA,commercial,6429,0.0,0.0
+47037,Davidson,TN,commercial,9673,0.0,0.0
+51153,Prince William,VA,commercial,9726,0.0,0.0
+48085,Collin,TX,commercial,15137,0.0,0.0
+48451,Tom Green,TX,commercial,15627,0.0,0.0
+35043,Sandoval,NM,commercial,15204,0.0,0.0
+47187,Williamson,TN,commercial,13982,0.0,0.0
+26139,Ottawa,MI,commercial,14371,0.0,0.0
+01127,Walker,AL,commercial,5621,0.0,0.0
+31055,Douglas,NE,commercial,21954,0.0,0.0
+28121,Rankin,MS,commercial,14737,0.0,0.0
+39041,Delaware,OH,commercial,18893,0.0,0.0
+48245,Jefferson,TX,commercial,10842,0.0,0.0
+05017,Chicot,AR,commercial,9711,0.0,0.0
+01115,St. Clair,AL,commercial,4513,0.0,0.0
+05021,Clay,AR,commercial,9246,0.0,0.0
+48303,Lubbock,TX,commercial,14518,0.0,0.0
+13089,DeKalb,GA,commercial,5372,0.0,0.0
+51107,Loudoun,VA,commercial,8204,0.0,0.0
+48491,Williamson,TX,commercial,18080,0.0,0.0
+49013,Duchesne,UT,commercial,2681,0.0,0.0
+47063,Hamblen,TN,commercial,4872,0.0,0.0
+06115,Yuba,CA,commercial,7622,0.0,0.0
+41035,Klamath,OR,commercial,1621,0.0,0.0
+39095,Lucas,OH,commercial,12617,0.0,0.0
+39171,Williams,OH,commercial,12558,0.0,0.0
+48029,Bexar,TX,commercial,7153,0.0,0.0
+11001,District of Columbia,DC,commercial,11217,0.0,0.0
+17099,LaSalle,IL,commercial,15585,0.0,0.0
+06019,Fresno,CA,commercial,12608,0.0,0.0
+47065,Hamilton,TN,commercial,16692,0.0,0.0
+48481,Wharton,TX,commercial,18327,0.0,0.0
+16055,Kootenai,ID,commercial,8183,0.0,0.0
+06077,San Joaquin,CA,commercial,14873,0.0,0.0
+20055,Finney,KS,commercial,14172,0.0,0.0
+27171,Wright,MN,commercial,10891,0.0,0.0
+34025,Monmouth,NJ,commercial,3510,0.0,0.0
+06029,Kern,CA,commercial,1369,0.0,0.0

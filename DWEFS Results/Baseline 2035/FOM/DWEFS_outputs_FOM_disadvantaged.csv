@@ -1,0 +1,267 @@
+fips,county_name,state_abbr,underserved,wind_breakeven_cost_fom,wind_tp_fom,wind_ep_fom
+08123,Weld,CO,True,538,171.0,0.0
+06047,Merced,CA,True,42,79.3,0.0
+28083,Leflore,MS,True,259,61.0,0.0
+40015,Caddo,OK,True,890,26.5,0.0
+40047,Garfield,OK,True,816,26.5,0.0
+17091,Kankakee,IL,True,758,24.7,0.0
+28119,Quitman,MS,True,343,24.4,0.0
+17107,Logan,IL,True,680,24.3,0.0
+28051,Holmes,MS,True,253,19.0,0.0
+29147,Nodaway,MO,True,1071,17.8,2.4
+24041,Talbot,MD,True,317,16.8,0.0
+17113,McLean,IL,True,1049,16.5,10.0
+21017,Bourbon,KY,True,776,15.5,0.0
+05037,Cross,AR,True,549,15.1,0.0
+35057,Torrance,NM,True,978,14.9,0.0
+48165,Gaines,TX,True,381,14.1,0.0
+48229,Hudspeth,TX,True,193,13.4,0.0
+48283,La Salle,TX,True,287,11.9,0.0
+08073,Lincoln,CO,True,254,11.2,0.0
+27027,Clay,MN,True,661,10.8,0.0
+29101,Johnson,MO,True,842,10.7,0.0
+29205,Shelby,MO,True,753,9.9,0.0
+29091,Howell,MO,True,258,9.8,0.0
+48491,Williamson,TX,True,308,9.6,0.0
+29133,Mississippi,MO,True,543,9.0,0.0
+31057,Dundy,NE,True,586,8.9,0.0
+53043,Lincoln,WA,True,388,8.5,0.0
+20029,Cloud,KS,True,505,8.5,0.0
+35013,Doña Ana,NM,True,368,8.4,0.0
+30105,Valley,MT,True,893,8.4,0.0
+48093,Comanche,TX,True,359,8.4,0.0
+30015,Chouteau,MT,True,869,8.3,0.4
+46123,Tripp,SD,True,971,8.3,1.3
+28053,Humphreys,MS,True,370,8.2,0.0
+38025,Dunn,ND,True,719,8.0,0.0
+18053,Grant,IN,True,808,7.8,0.0
+40145,Wagoner,OK,True,891,7.6,0.0
+30075,Powder River,MT,True,558,7.6,0.0
+48319,Mason,TX,True,223,7.3,0.0
+27169,Winona,MN,True,676,7.1,0.0
+30085,Roosevelt,MT,True,426,6.9,0.0
+20099,Labette,KS,True,822,6.9,0.0
+31019,Buffalo,NE,True,912,6.8,0.0
+20009,Barton,KS,True,691,6.5,0.0
+17053,Ford,IL,True,983,6.3,0.0
+20085,Jackson,KS,True,685,6.3,0.0
+20047,Edwards,KS,True,711,6.2,0.0
+20095,Kingman,KS,True,683,6.2,0.0
+17027,Clinton,IL,True,720,6.2,0.0
+32003,Clark,NV,True,616,6.1,0.0
+48475,Ward,TX,True,99,6.1,0.0
+30107,Wheatland,MT,True,489,5.7,0.0
+48115,Dawson,TX,True,346,5.7,0.0
+46067,Hutchinson,SD,True,839,5.6,0.0
+48263,Kent,TX,True,350,5.5,0.0
+20165,Rush,KS,True,667,5.5,0.0
+06021,Glenn,CA,True,474,5.3,0.0
+46011,Brookings,SD,True,610,5.3,0.0
+53025,Grant,WA,True,158,5.3,0.0
+48247,Jim Hogg,TX,True,515,5.2,0.0
+46005,Beadle,SD,True,572,5.2,0.0
+13115,Floyd,GA,True,10,5.0,0.0
+06049,Modoc,CA,True,40,5.0,0.0
+36069,Ontario,NY,True,483,4.8,0.0
+48127,Dimmit,TX,True,229,4.5,0.0
+08125,Yuma,CO,True,669,4.3,0.0
+48421,Sherman,TX,True,690,4.3,0.0
+27129,Renville,MN,True,820,4.2,0.0
+48311,McMullen,TX,True,496,4.0,0.0
+48331,Milam,TX,True,520,4.0,0.0
+38105,Williams,ND,True,745,3.9,0.0
+41055,Sherman,OR,True,673,3.9,0.0
+30073,Pondera,MT,True,718,3.7,0.0
+46069,Hyde,SD,True,634,3.6,0.0
+16033,Clark,ID,True,149,3.4,0.0
+30005,Blaine,MT,True,838,3.3,0.0
+06071,San Bernardino,CA,True,623,3.3,0.0
+49021,Iron,UT,True,599,3.0,0.0
+30111,Yellowstone,MT,True,127,3.0,0.0
+48371,Pecos,TX,True,271,2.9,0.0
+46093,Meade,SD,True,714,2.9,0.0
+20053,Ellsworth,KS,True,793,2.7,0.0
+19157,Poweshiek,IA,True,936,2.7,0.0
+19051,Davis,IA,True,805,2.7,0.0
+45075,Orangeburg,SC,True,394,2.7,0.0
+27095,Mille Lacs,MN,True,436,2.6,0.0
+20129,Morton,KS,True,639,2.5,0.0
+40027,Cleveland,OK,True,789,2.5,0.0
+20041,Dickinson,KS,True,923,2.5,0.0
+29117,Livingston,MO,True,745,2.4,0.0
+40071,Kay,OK,True,1031,2.4,0.3
+20021,Cherokee,KS,True,1045,2.3,2.3
+37019,Brunswick,NC,True,755,2.3,0.0
+31161,Sheridan,NE,True,875,2.2,0.0
+31031,Cherry,NE,True,1018,2.2,2.2
+48447,Throckmorton,TX,True,717,2.2,0.0
+31127,Nemaha,NE,True,851,2.2,0.0
+38069,Pierce,ND,True,639,2.2,0.0
+30035,Glacier,MT,True,859,2.1,0.0
+48117,Deaf Smith,TX,True,536,2.1,0.0
+31047,Dawson,NE,True,791,2.1,0.0
+53039,Klickitat,WA,True,431,2.1,0.0
+46111,Sanborn,SD,True,549,2.0,0.0
+46071,Jackson,SD,True,484,2.0,0.0
+51001,Accomack,VA,True,860,2.0,0.0
+01013,Butler,AL,True,179,2.0,0.0
+05041,Desha,AR,True,398,2.0,0.0
+48153,Floyd,TX,True,799,2.0,0.0
+20173,Sedgwick,KS,True,679,1.9,0.0
+18131,Pulaski,IN,True,708,1.9,0.0
+29097,Jasper,MO,True,1045,1.9,1.3
+48501,Yoakum,TX,True,498,1.8,0.0
+05017,Chicot,AR,True,378,1.8,0.0
+19185,Wayne,IA,True,810,1.8,0.0
+41037,Lake,OR,True,58,1.8,0.0
+08021,Conejos,CO,True,40,1.8,0.0
+30051,Liberty,MT,True,691,1.8,0.0
+48437,Swisher,TX,True,635,1.7,0.0
+20005,Atchison,KS,True,738,1.7,0.0
+31173,Thurston,NE,True,1363,1.7,1.7
+20031,Coffey,KS,True,1038,1.7,1.7
+38083,Sheridan,ND,True,792,1.6,0.0
+31121,Merrick,NE,True,743,1.6,0.0
+31151,Saline,NE,True,825,1.6,0.0
+38093,Stutsman,ND,True,708,1.6,0.0
+32031,Washoe,NV,True,305,1.6,0.0
+31131,Otoe,NE,True,1062,1.6,1.6
+46039,Deuel,SD,True,787,1.5,0.0
+27161,Waseca,MN,True,794,1.5,0.0
+30011,Carter,MT,True,653,1.5,0.0
+30019,Daniels,MT,True,701,1.5,0.0
+27077,Lake of the Woods,MN,True,407,1.5,0.0
+19147,Palo Alto,IA,True,904,1.4,0.0
+55025,Dane,WI,True,758,1.4,0.0
+47095,Lake,TN,True,577,1.4,0.0
+23029,Washington,ME,True,617,1.4,0.0
+13033,Burke,GA,True,96,1.3,0.0
+22035,East Carroll,LA,True,474,1.3,0.0
+26067,Ionia,MI,True,813,1.3,0.0
+27013,Blue Earth,MN,True,912,1.3,0.0
+37061,Duplin,NC,True,509,1.3,0.0
+31009,Blaine,NE,True,636,1.3,0.0
+38015,Burleigh,ND,True,501,1.2,0.0
+48209,Hays,TX,True,728,1.2,0.0
+48465,Val Verde,TX,True,313,1.2,0.0
+22123,West Carroll,LA,True,392,1.2,0.0
+16073,Owyhee,ID,True,77,1.2,0.0
+05011,Bradley,AR,True,223,1.1,0.0
+48305,Lynn,TX,True,656,1.1,0.0
+45003,Aiken,SC,True,142,1.1,0.0
+38023,Divide,ND,True,516,1.1,0.0
+38009,Bottineau,ND,True,559,1.1,0.0
+38019,Cavalier,ND,True,1157,1.1,1.1
+40151,Woods,OK,True,749,1.1,0.0
+46101,Moody,SD,True,505,1.1,0.0
+38041,Hettinger,ND,True,571,1.0,0.0
+40097,Mayes,OK,True,696,1.0,0.0
+05001,Arkansas,AR,True,396,1.0,0.0
+27149,Stevens,MN,True,770,1.0,0.0
+19187,Webster,IA,True,1040,1.0,1.0
+19071,Fremont,IA,True,774,1.0,0.0
+01085,Lowndes,AL,True,64,1.0,0.0
+40073,Kingfisher,OK,True,822,1.0,0.0
+19193,Woodbury,IA,True,1074,1.0,1.0
+40091,McIntosh,OK,True,703,1.0,0.0
+29145,Newton,MO,True,854,1.0,0.0
+35035,Otero,NM,True,97,0.9,0.0
+25027,Worcester,MA,True,36,0.9,0.0
+46037,Day,SD,True,948,0.9,0.0
+29211,Sullivan,MO,True,883,0.9,0.0
+48177,Gonzales,TX,True,132,0.9,0.0
+47077,Henderson,TN,True,277,0.8,0.0
+38035,Grand Forks,ND,True,766,0.8,0.0
+16083,Twin Falls,ID,True,453,0.8,0.0
+20201,Washington,KS,True,821,0.8,0.0
+40041,Delaware,OK,True,1331,0.7,0.7
+45091,York,SC,True,105,0.7,0.0
+21045,Casey,KY,True,499,0.7,0.0
+21047,Christian,KY,True,396,0.7,0.0
+17011,Bureau,IL,True,720,0.7,0.0
+48443,Terrell,TX,True,212,0.7,0.0
+18181,White,IN,True,917,0.7,0.0
+48219,Hockley,TX,True,610,0.7,0.0
+21079,Garrard,KY,True,322,0.7,0.0
+29155,Pemiscot,MO,True,631,0.7,0.0
+48027,Bell,TX,True,581,0.7,0.0
+37155,Robeson,NC,True,526,0.7,0.0
+20195,Trego,KS,True,735,0.7,0.0
+20183,Smith,KS,True,632,0.7,0.0
+51025,Brunswick,VA,True,167,0.6,0.0
+06065,Riverside,CA,True,1082,0.6,0.3
+12075,Levy,FL,True,26,0.6,0.0
+26099,Macomb,MI,True,293,0.6,0.0
+40077,Latimer,OK,True,87,0.6,0.0
+20069,Gray,KS,True,658,0.6,0.0
+48309,McLennan,TX,True,537,0.6,0.0
+31157,Scotts Bluff,NE,True,157,0.6,0.0
+27087,Mahnomen,MN,True,775,0.5,0.0
+31059,Fillmore,NE,True,916,0.5,0.0
+30033,Garfield,MT,True,898,0.5,0.0
+31129,Nuckolls,NE,True,836,0.5,0.0
+24045,Wicomico,MD,True,519,0.5,0.0
+18031,Decatur,IN,True,660,0.5,0.0
+48225,Houston,TX,True,225,0.5,0.0
+46023,Charles Mix,SD,True,1039,0.5,0.5
+46091,Marshall,SD,True,869,0.5,0.0
+19045,Clinton,IA,True,761,0.5,0.0
+19021,Buena Vista,IA,True,1073,0.5,0.5
+37163,Sampson,NC,True,443,0.5,0.0
+28011,Bolivar,MS,True,459,0.5,0.0
+48131,Duval,TX,True,353,0.5,0.0
+30079,Prairie,MT,True,315,0.5,0.0
+48039,Brazoria,TX,True,181,0.5,0.0
+19031,Cedar,IA,True,752,0.5,0.0
+29081,Harrison,MO,True,735,0.5,0.0
+51135,Nottoway,VA,True,345,0.5,0.0
+19039,Clarke,IA,True,1072,0.4,0.4
+39097,Madison,OH,True,646,0.4,0.0
+08067,La Plata,CO,True,115,0.4,0.0
+08041,El Paso,CO,True,284,0.4,0.0
+51099,King George,VA,True,58,0.4,0.0
+17119,Madison,IL,True,563,0.4,0.0
+39051,Fulton,OH,True,739,0.4,0.0
+20015,Butler,KS,True,1136,0.4,0.4
+17019,Champaign,IL,True,843,0.4,0.0
+17099,LaSalle,IL,True,545,0.4,0.0
+51037,Charlotte,VA,True,119,0.4,0.0
+48141,El Paso,TX,True,51,0.4,0.0
+46081,Lawrence,SD,True,1112,0.4,0.4
+48191,Hall,TX,True,84,0.4,0.0
+17145,Perry,IL,True,454,0.4,0.0
+17141,Ogle,IL,True,939,0.4,0.0
+51117,Mecklenburg,VA,True,176,0.4,0.0
+30083,Richland,MT,True,15,0.4,0.0
+30069,Petroleum,MT,True,577,0.4,0.0
+27137,St. Louis,MN,True,335,0.4,0.0
+55027,Dodge,WI,True,743,0.3,0.0
+06037,Los Angeles,CA,True,357,0.3,0.0
+26073,Isabella,MI,True,610,0.3,0.0
+27091,Martin,MN,True,1004,0.3,0.3
+22057,Lafourche,LA,True,3,0.3,0.0
+38077,Richland,ND,True,786,0.3,0.0
+06079,San Luis Obispo,CA,True,121,0.3,0.0
+04005,Coconino,AZ,True,645,0.3,0.0
+29165,Platte,MO,True,665,0.3,0.0
+48021,Bastrop,TX,True,29,0.3,0.0
+38079,Rolette,ND,True,627,0.3,0.0
+48121,Denton,TX,True,555,0.3,0.0
+48189,Hale,TX,True,717,0.3,0.0
+39083,Knox,OH,True,435,0.3,0.0
+48503,Young,TX,True,786,0.3,0.0
+27111,Otter Tail,MN,True,819,0.3,0.0
+27049,Goodhue,MN,True,874,0.3,0.0
+04003,Cochise,AZ,True,43,0.2,0.0
+48355,Nueces,TX,True,158,0.2,0.0
+31177,Washington,NE,True,1182,0.2,0.2
+18051,Gibson,IN,True,527,0.2,0.0
+48113,Dallas,TX,True,173,0.2,0.0
+05093,Mississippi,AR,True,741,0.2,0.0
+05075,Lawrence,AR,True,512,0.2,0.0
+20051,Ellis,KS,True,822,0.2,0.0
+28133,Sunflower,MS,True,400,0.1,0.0
+31159,Seward,NE,True,962,0.1,0.0
+31007,Banner,NE,True,716,0.1,0.0
+19035,Cherokee,IA,True,546,0.1,0.0
+30099,Teton,MT,True,962,0.1,0.0

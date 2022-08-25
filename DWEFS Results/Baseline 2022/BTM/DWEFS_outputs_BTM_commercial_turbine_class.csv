@@ -1,0 +1,57 @@
+fips,county_name,state_abbr,turbine_class,wind_breakeven_cost_btm,wind_tp_btm,wind_ep_btm
+18157,Tippecanoe,IN,commercial,5472,20.0,0.0
+08005,Arapahoe,CO,commercial,8208,7.1,7.1
+36091,Saratoga,NY,commercial,1101,1.1,0.0
+21141,Logan,KY,commercial,9972,1.1,1.1
+18003,Allen,IN,commercial,9292,0.8,0.8
+01003,Baldwin,AL,commercial,7682,0.6,0.6
+37123,Montgomery,NC,commercial,4782,0.5,0.0
+18017,Cass,IN,commercial,8325,0.5,0.5
+12015,Charlotte,FL,commercial,3095,0.4,0.0
+21125,Laurel,KY,commercial,4213,0.4,0.0
+44009,Washington,RI,commercial,7475,0.3,0.3
+21207,Russell,KY,commercial,7807,0.3,0.3
+49049,Utah,UT,commercial,2448,0.3,0.0
+48439,Tarrant,TX,commercial,8940,0.3,0.1
+36011,Cayuga,NY,commercial,1896,0.3,0.0
+08067,La Plata,CO,commercial,1273,0.3,0.0
+20155,Reno,KS,commercial,10589,0.2,0.2
+08041,El Paso,CO,commercial,15678,0.2,0.2
+37057,Davidson,NC,commercial,3942,0.2,0.0
+21173,Montgomery,KY,commercial,9240,0.1,0.1
+13313,Whitfield,GA,commercial,3660,0.1,0.0
+48141,El Paso,TX,commercial,2255,0.1,0.0
+22033,East Baton Rouge,LA,commercial,1606,0.1,0.0
+48113,Dallas,TX,commercial,5825,0.1,0.1
+13059,Clarke,GA,commercial,2663,0.1,0.0
+48201,Harris,TX,commercial,3882,0.1,0.0
+37119,Mecklenburg,NC,commercial,3109,0.1,0.0
+37061,Duplin,NC,commercial,6468,0.1,0.1
+47157,Shelby,TN,commercial,5023,0.1,0.0
+12101,Pasco,FL,commercial,1441,0.1,0.0
+30083,Richland,MT,commercial,5599,0.1,0.0
+13077,Coweta,GA,commercial,3300,0.1,0.0
+17043,DuPage,IL,commercial,8672,0.1,0.1
+12095,Orange,FL,commercial,2918,0.1,0.0
+39049,Franklin,OH,commercial,5510,0.1,0.0
+13121,Fulton,GA,commercial,2544,0.1,0.0
+01049,DeKalb,AL,commercial,4407,0.1,0.0
+53063,Spokane,WA,commercial,3372,0.1,0.0
+24005,Baltimore,MD,commercial,3683,0.1,0.0
+37191,Wayne,NC,commercial,7318,0.1,0.1
+01019,Cherokee,AL,commercial,2730,0.1,0.0
+53073,Whatcom,WA,commercial,3944,0.1,0.0
+29187,St. Francois,MO,commercial,8195,0.1,0.1
+19153,Polk,IA,commercial,4911,0.1,0.0
+48423,Smith,TX,commercial,5899,0.0,0.0
+48355,Nueces,TX,commercial,6861,0.0,0.0
+05119,Pulaski,AR,commercial,3204,0.0,0.0
+16075,Payette,ID,commercial,2306,0.0,0.0
+49005,Cache,UT,commercial,1566,0.0,0.0
+37067,Forsyth,NC,commercial,5037,0.0,0.0
+27037,Dakota,MN,commercial,6224,0.0,0.0
+47063,Hamblen,TN,commercial,2216,0.0,0.0
+12127,Volusia,FL,commercial,2904,0.0,0.0
+08035,Douglas,CO,commercial,5404,0.0,0.0
+27015,Brown,MN,commercial,4771,0.0,0.0
+06101,Sutter,CA,commercial,3993,0.0,0.0
