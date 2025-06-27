@@ -1,0 +1,34 @@
+___________________________________________________________________________________________
+
+# urdb rate jsons
+
+### cli
+pg_dump --host "1lv11dnpg01.nrel.gov" --port=5432 --encoding=utf8 --username=jlockshi --no-owner --password --file "urdb3_rate_jsons_20200721.sql" --table "scratch.urdb3_rate_jsons_20200721" "dgen_db_fy17q3_dwind"
+psql --host sage.hpc.nrel.gov --username=dwindops dwind -f urdb3_rate_jsons_20200721.sql
+
+### sql
+create table urdb.urdb3_rate_jsons_20200721 as (
+	select * from scratch.urdb3_rate_jsons_20200721
+);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE urdb.urdb3_rate_jsons_20200721 TO dwindwrite;
+GRANT SELECT ON TABLE urdb.urdb3_rate_jsons_20200721 TO dwindread;
+___________________________________________________________________________________________
+
+# load profiles
+
+### cli
+pg_dump --host "1lv11dnpg01.nrel.gov" --port=5432 --encoding=utf8 --username=jlockshi --no-owner --password --file "energy_plus_normalized_load.sql" --table "scratch.energy_plus_normalized_load" "dgen_db_fy17q3_dwind"
+psql --host sage.hpc.nrel.gov --username=dwindops dwind -f energy_plus_normalized_load.sql
+
+### sql
+create table load.energy_plus_normalized_load as (
+	select * from scratch.energy_plus_normalized_load
+);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE load.energy_plus_normalized_load TO dwindwrite;
+GRANT SELECT ON TABLE load.energy_plus_normalized_load TO dwindread;
+
+GRANT USAGE ON SCHEMA "load" TO dwindread;
+GRANT CREATE, USAGE ON SCHEMA "load" TO dwindwrite;
+___________________________________________________________________________________________
