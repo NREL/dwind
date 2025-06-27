@@ -51,11 +51,6 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pre-commit>=2.20",
-]
-
 [project.scripts]
 dwind = "dwind.run:app"
 

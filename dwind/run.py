@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import sys
+import tomllib
 from enum import Enum
 from typing import Annotated
 from pathlib import Path
 
-import tomllib
 import typer
 import pandas as pd
 
