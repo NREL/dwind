@@ -1,0 +1,22 @@
+name: dwindconda env create -f environment.yml
+channels:
+  - conda-forge
+  - nrel
+dependencies:
+  - python=3.11
+  # - nrel-pysam=2.2.4  # This is on 5.1, why is this so out of date?
+  - nrel-rex
+  - pandas
+  - numpy
+  - sqlalchemy
+  - psycopg2
+  - scipy
+  - matplotlib
+  - seaborn
+  - pip
+  - pip:
+    - pyarrow
+    - fastparquet
+    - h5pyd
+    - typer
+    - "."
