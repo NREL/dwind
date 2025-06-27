@@ -1,0 +1,145 @@
+[project]
+DIR = "/projects/dwind/"
+DATA_DIR = "/projects/dwind/agents"
+
+WIND_RESOURCE_DIR = "/datasets/WIND/conus/v1.0.0/wtk_led_conus_2018_hourly.h5"
+SOLAR_RESOURCE_DIR = "/datasets/NSRDB/v3/nsrdb_2012.h5"
+
+[project.settings]
+SAVE_APP_PARQUET = true
+SIZE_SYSTEMS = true
+VERBOSITY = 0.1
+THREAD_WORKERS = 1
+CORES = 104
+
+TECHS = ["wind"]
+CAMBIUM_VALUE = "cambium_grid_value"
+CAMBIUM_DATA_DIR = "/projects/dwind/data/cambium_processed"
+GENERATION_SCALE_OFFSET = {"solar" = 1000, "wind" = 1000}
+
+[siting]
+[siting.wind]
+canopy_pct_requiring_clearance = 10.0
+canopy_clearance_static_adder_m = 12
+required_parcel_size_cap_acres = 1e6
+blade_height_setback_factor = 1.10
+blade_height_setback_factor_res = 1.10
+max_btm_size_kw = 5000.0
+min_fom_size_kw = 500.0
+max_fom_size_kw = 10000.0
+
+[siting.solar]
+capacity_density_kw_per_sqft = 0.0033444
+max_btm_size_kw = 5000.0
+min_fom_size_kw = 500.0
+max_fom_size_kw = 10000.0
+
+
+[rev]
+DIR = "/projects/dwind/data/rev/"
+
+[rev.settings]
+azimuth_direction_to_degree = {"E" = 90, "SE" = 135, "S" = 180, "SW" = 225, "W" = 270}
+wind = ["res", "com", "mid", "large"]
+solar = ["90_15", "90_25", "90_35", "90_45", "90_55", "135_15", "135_25", "135_35", "135_45", "135_55", "180_15", "180_25", "180_35", "180_45", "180_55", "225_15", "225_25", "225_35", "225_45", "225_55", "270_15", "270_25", "270_35", "270_45", "270_55"]
+
+[rev.generation]
+solar_DIR = "/projects/dwind/configs/rev/solar"
+wind_DIR = "/projects/dwind/configs/rev/wind"
+
+[rev.turbine_class_dict]
+"0" = "none"
+"2.5" = "res"
+"5.0" = "res"
+"10.0" = "res"
+"20.0" = "res"
+"50.0" = "com"
+"100.0" = "com"
+"250.0" = "mid"
+"500.0" = "mid"
+"750.0" = "mid"
+"1000.0" = "large"
+"1500.0" = "large"
+
+[cost]
+# All variables should be used as constructed as path / file like: config.cost.DIR / config.cost.XX
+DIR = "/projects/dwind/configs/costs/atb24"
+
+RETAIL_RATE = "AEO23_Mid_Case_retail.csv"
+RETAIL_RATE_INPUT_TABLE = "AEO23_Mid_Case_retail.csv"
+WHOLESALE_RATE_INPUT_TABLE = "AEO23_Mid_Case_wholesale.csv"
+FINANCIAL_INPUTS_TABLE = "ATB24_financing_baseline_2025.csv"
+DEPREC_INPUTS_TABLE = "ATB24_depc_factors.csv"
+
+WIND_PRICE_INPUT_TABLE = "ATB24_wind_prices.csv"
+WIND_TECH_INPUT_TABLE = "wind_tech_performance_1_reference"
+WIND_DERATE_INPUT_TABLE = "wind_derate_sched_1_reference"
+
+PV_PRICE_INPUT_TABLE = "pv_price_atb20_mid"
+PV_TECH_INPUT_TABLE = "pv_tech_performance_defaultFY19"
+
+PV_PLUS_BATT_PRICE_INPUT_TABLE = "pv_plus_batt_prices_FY20_mid_pv_mid_batt"
+BATT_PRICE_INPUT_TABLE = "batt_prices_FY20_mid"
+BATT_TECH_INPUT_TABLE = "batt_tech_performance_SunLamp17"
+
+[btm]
+SYS_SIZE_TARGET_NO_NEM = 0.5
+SYS_OVERSIZE_LIMIT_NO_NEM = 1.0
+
+[sql]
+USER_PG = "user"
+PASSWORD_PG = "password"
+
+USER_SAGE = "user"
+PASSWORD_SAGE = "password"
+
+PARCELS_PG_CON_STR = "postgresql://{USER_PG}:{PASSWORD_PG}@1lv11gispg02.nrel.gov:5432/parcels"
+ATLAS_PG_CON_STR = "postgresql://{USER_PG}:{PASSWORD_PG}@plv11dnpg01.nrel.gov:5432/dgen_db_fy17q3_dwind"
+LIGHTBOX_PG_CON_STR = "postgresql://{USER_PG}:{PASSWORD_PG}@gds_publish.nrel.gov:5432/ref_lightbox"
+MS_BG_CON_STR = "postgresql://{USER_PG}:{PASSWORD_PG}@gds_publish.nrel.gov:5432/ref_microsoft"
+SAGE_PG_CON_STR = "postgresql://{USER_SAGE}:{PASSWORD_SAGE}@sage.hpc.nrel.gov:5432/dgensfs"
+
+
+GENERATOR_LOOKUP_TABLE = "diffusion_resource_wind.dwfs_parcel_resource_lkup_test"
+
+[pysam]
+[pysam.outputs]
+btm = [
+    "adjusted_installed_cost",
+    "discounted_payback",
+    "effective_tax_rate",
+    "first_cost",
+    "lcoe_nom",
+    "lcoe_real",
+    "loan_amount",
+    "npv",
+    "payback",
+    "present_value_oandm",
+    "total_cost",
+    "wacc",
+]
+fom = [
+    "adjusted_installed_cost",
+    "cost_debt_upfront",
+    "cost_financing",
+    "cost_installed",
+    "cost_installedperwatt",
+    "cost_prefinancing",
+    "debt_fraction",
+    "effective_tax_rate",
+    "lcoe_nom",
+    "lcoe_real",
+    "nominal_discount_rate",
+    "npv_annual_costs",
+    "npv_capacity_revenue",
+    "npv_curtailment_revenue",
+    "npv_energy_market_revenue",
+    "npv_energy_nom",
+    "npv_energy_real",
+    "present_value_oandm",
+    "project_return_aftertax_irr",
+    "project_return_aftertax_npv",
+    "size_of_debt",
+    "size_of_equity",
+    "wacc",
+]

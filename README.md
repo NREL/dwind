@@ -1,158 +1,124 @@
-![dGen outputs in action](https://www.nrel.gov/analysis/dgen/assets/images/hero-hp-dgen.jpg)
+# Distributed Wind Generation Model (dWind)
 
-## Watch The Webinar and Setup Tutorial
-https://attendee.gotowebinar.com/recording/7790172234808601356
-Note: the webinar is specific to the [Open Source dGen model](https://github.com/NREL/dgen), though much of the material applies for the dWind model.
+Please note that at this time the model can only be run on NREL's Kestrel HPC system. Though a
+savvy user could recreate our data in their own computing environment and update the
+internal pointers in the example configuration at `examples/larimer_county_btm_baseline_2025.toml`
+and `examples/model_config.toml`.
 
+## Installing dwind
 
-## Get Your Tools
-Install Docker
-(Mac): https://docs.docker.com/docker-for-mac/install/; (Windows): https://docs.docker.com/docker-for-windows/install/
+1. Install Anaconda or Miniconda (recommended) if not already installed.
+2. Clone the repository
 
-- Important: In Docker, go into Docker > Preferences > Resources and increase the allocation for disk size image for Docker. 16 GB is recommended for smaller (state-level) databases. 70+GB is required for restoring the national database. If you get a memory issue then you will need to increase the memory allocation and/or will need to prune past failed images/volumes. Running the Docker commands below will clear these out and let you start fresh:
-```
-   $ docker system prune -a
-   $ docker volume prune -f
-```
-- Refer to Docker’s website for more details on this.
+   ```bash
+   git clone https://github.com/NREL/dwind.git
+   ```
 
-Install Anaconda Python 3.7 Version: https://www.anaconda.com/distribution/
+3. Navigate to the dwind repository.
 
-Install PgAdmin: https://www.pgadmin.org/download/ (ignore all of the options for docker, python, os host, etc.)
+   ```bash
+   cd /path/to/dwind
+   ```
 
-Install Git: If you don't already have Git installed, then navigate here to install it for your operating system: https://www.atlassian.com/git/tutorials/install-git
+4. Create your dwind environment using our recommended settings and all required dependencies.
 
-Windows users: if you don't have UNIX commands enabled for command prompt/powershell then you'll need to install Cygwin or QEMU to run a UNIX terminal.
+    ```bash
+    conda env create -f environment.yml
+    ```
 
-## Download Code 
-New users should fork a copy of dGen to their own private github account 
+## Running
 
+### Configuring
 
-Next, clone the repository to your local machine by running the following in a terminal/powershell/command prompt. Be sure to enter your username in place of `<github_username>` below, which will clone the forked repository:
-```
-   $ git clone https://github.com/<github_username>/dwind.git
-```
+`dWind` relies on 2 configuration files: 1) a system-wise setting that can be shared among a team,
+and 2) a run-specific configuration file. Both will be described below.
 
-- Create a new branch in this repository by running `git checkout -b <branch_name_here>`
-- It is generally a good practice to leave the master branch of a forked repository unchanged for easier updating in future. Create new branches when developing features or performing configurations for unique runs.
+#### Primary model configuration
 
-# Running and Configuring dGen
+The primary model configuration should look exactly like (or be compatible with)
+`examples/model_config.toml` to ensure varying fields are read correctly throughout the model.
 
-### A. Create Environment
-After cloning this repository and installing (and running) Docker as well as Anaconda, we will create our conda environment and Docker container:
+Internally, `dWind` is able to convert the following data to adhere to internal usage:
+- Any field with "DIR" is converted to a Python `pathlib.Path` object for robust file handling
+- SQL credentials and constructor strings are automatically formed in the `[sql]` table for easier
+  construction of generic connection strings. Specifically the `{USER}` and `{PASSWORD}` fields
+  get replaced with their corresponding setting in the same table.
 
-1. Depending on directory you cloned this repo into, navigate in terminal to the python directory (/../dgen/python) and run the following command:
+`Configuration`, the primary class handling this data allows for dot notation and dictionary-style
+attribute calling at all levels of nesting. This means, `config.pysam.outputs.btm` and
+`config.pysam.outputs["btm"]` are equivalent. This makes for more intuitive dynamic attribute
+fetching when updating the code for varying cases.
 
-```
-   $ conda env create -f dg3n.yml
-```
+#### Run configuration
 
-- This will create the conda environment needed to run the dWind model. Note: this environment is identical to the [Open Source dGen](https://github.com/NREL/dgen) conda environment, for ease of use.
+The run-specific configuration should look like `examples/larimer_county_btm_baseline_2025.toml`,
+which controls all the dynamic model settings, HPC configurations, and a pointer to the primary
+model configuration described above.
 
-2. Create a container with PostgreSQL initialized:
-```
-   $ docker run --name postgis_1 -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -d mdillon/postgis
-```
-- Alternatively, if having issues connecting to the postgres server in pgAdmin, run:
+### Run the model
 
-```
-   $ docker run --name postgis_1 -p 5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -d mdillon/postgis
-```
-- This will allow the docker container to select a different port to forward to 5432.
+`dwind` has a robust CLI interface allowing for the usage of `python path/to/dwind/dwind/run.py` or
+`dwind`. The model currently supports the run prompts:
+- `dwind run-config <run-configuration.toml>
+- `dwind run-hpc --arg1 ... --argn` where the `--arg` parameters are used in place of the run TOML
+  file.
 
-3. Connect to the PostgreSQL DB:
+If at any point, further guidance is needed, pass `--help` to `dwind` or any of the subcommands for
+detailed information on the required and optional inputs.
 
-```
-   $ docker container ls
-   $ docker exec -it <container id> psql -U postgres
-   $ postgres=# CREATE DATABASE dwind_db;
-```
-- If you get the error `psql: FATAL:  the database system is starting up` try rerunning the `docker exec` command again after a minute or so because Docker can take some time to initialize.
+To run the model, it is recommended to use the following workflow from your analysis folder.
+1. Start a new `screen` session on Kestrel.
 
-- `CREATE DATABASE` will be printed when the database is created. `\l` will display the databases in your server.
+   ```bash
+   screen -S <analysis-name>
+   ```
 
-- `postgres=# \c dwind_db` can then be used to connect to the database, but this step is not necessary.
+2. Load your conda environment with dwind installed.
 
+   ```bash
+   module load conda
+   conda activate <env_name>
+   ```
 
-### B. Download data (agents and database):
-Download data from the publicly available [Box folder](https://app.box.com/s/pk5q1wi3tekf48pk3jfwaj1zjyoihxk6). Make sure to unzip any zipped files once downloaded. We recommend starting with the database specific to the state you are interested in. We also recommended only downloading one data file at a time to avoid a "download size exceeded" error. 
+3. Navigate to your analysis folder if your relative data locations in your run configuration are
+   relative to the analysis folder.
 
-Each state-level or national `.zip` file will contain the database backup as well as the files for both the residential and commercial agents.
+   ```bash
+   cd /path/to/analysis/location
+   ```
 
-Next, run the following in the command line (replacing `path_to_where_you_saved_database_file` below with the actual path where you saved your database file): 
+4. Run the model.
 
-```
-   $ cat /path_to_where_you_saved_data/dwind_db.sql | docker exec -i <container id> psql -U postgres -d dwind_db
-```
+   ```bash
+   dwind run-config examples/larimer_county_btm_baseline_2025.toml
+   ```
 
-- Note, if on a Windows machine, use Powershell rather than command prompt. If Linux commands still aren't working in Powershell, you can copy the data to the docker container and then load the data by running:
+5. Disconnect your screen `Ctrl` + `a` + `d` and wait for the analysis to complete and view your
+   results.
 
-```
-   $ docker cp /path_to_where_you_saved_data/dwind_db.sql <container id>:/dwind_db.sql
-   $ docker exec -i <container id> psql -U postgres -d dwind_db -f dwind_db.sql
-```
+## `dwind` run settings
 
-- Backing up state-level databases will likely take 5-15 minutes. The national database will take 45-60 minutes. 
-- Don't close docker at any point while running dWind.
-- The container can be "paused" by running `$ docker stop <container id>` and "started" by running `$ docker start <container id>`
+### `run-config`
 
-### C. Create Local Server:
-Once the database is restored, open PgAdmin and create a new server. Name this whatever you want. Write "localhost" (or 127.0.0.1) in the host/address cell and "postgres" in both the username and password cells. Upon refreshing this and opening the database dropdown, you should be able to see your database. 
-
-### D: Activate Environment 
-Activate the `dg3n` environment and launch Spyder by opening a new terminal window and run the following command:
-
-```
-   $ conda activate dg3n
-   $ (dg3n) spyder
+```bash
+*    config_path      TEXT  Path to configuration TOML with run and model parameters. [default: None] [required]
 ```
 
-- In Spyder, open the `dgen_model.py` file. This is what we will run once everything is configured.
+### `run-hpc`
 
-### E: Configure Scenario
-1. Open the blank input sheet located in `dwind_os/excel/input_sheet_os_dwind.xlsx`. This file defines most of the settings for a scenario. Configure it depending on the desired model run and save a copy in the input_scenarios folder, i.e. `dwind_os/input_scenarios/my_scenario.xlsx`. 
-
-- See the Input Sheet Wiki page for more details on customizing scenarios.
-
-
-2. In the python folder, open `pg_params_atlas.json` and configure it to your local database. If you did not change your username or password settings while setting up the Docker container, this file should look like the below example:
-
+```bash
+ *  --location            TEXT        The state, state_county, or priority region to run. [default: None] [required]
+ *  --sector              [fom|btm]   One of fom (front of meter) or btm (back-of-the-meter). [default: None] [required]
+ *  --scenario            [baseline]  The scenario to run (baseline is the current only option). [default: None] [required]
+ *  --year                INTEGER     The assumption year for the analysis. Options are 2022, 2024, and 2025. [default: None] [required]
+ *  --repository          TEXT        Path to the dwind repository to use when running the model. [default: None] [required]
+ *  --nodes               INTEGER     Number of HPC nodes or CPU nodes to run on. -1 indicates 75% of CPU limit. [default: None] [required]
+ *  --allocation          TEXT        HPC allocation name. [default: None] [required]
+ *  --memory              INTEGER     Node memory, in GB (HPC only). [default: None] [required]
+ *  --walltime            INTEGER     Node walltime request, in hours. [default: None] [required]
+ *  --feature             TEXT        Additional flags for the SLURM job, using formatting such as --qos=high or --depend=[state:job_id]. [default: None] [required]
+ *  --env                 TEXT        The path to the dwind Python environment that should be used to run the model. [default: None] [required]
+ *  --model-config        TEXT        Complete file name and path of the model configuration file [default: None] [required]
+ *  --dir-out             TEXT        Path to where the chunked outputs should be saved. [default: None] [required]
+ *  --stdout-path         TEXT        The path to write stdout logs. [default: None]
 ```
-   {	
-   	"dbname": "dwind_db",
-    	"host": "localhost",
-   	"port": "5432",
-   	"user": "postgres",
-   	"password": "postgres"
-   }
-```
-
-- Localhost could also be set as "127.0.0.1"
-- Save this file
-
-The cloned repository will have already initialized the default values for the following important parameters:
-
-* ` start_year = 2014 ` (in `dwind_os/python/config.py`)        --> year the model will begin at
-* ` pg_procs = 2 ` (in `dwind_os/python/config.py`)             --> number of parallel processes the model will run with
-* ` cores = 2 ` (in `dwind_os/python/config.py`)                --> number of cores the model will run with
-
-
-### F: Run the Model
-Run the model in the command line:
-```
-   $ python dgen_model.py
-```
-Or, open `dgen_model.py` in the Spyder IDE and hit the large green arrow "play button" near the upper left to run the model.
-
-If `drop_output_schema = False` ( in `dwind_os/python/config.py`), results from the model run will be placed in a SQL table called "agent_outputs" within a newly created schema in the connected database. Because the database will not persist once a docker container is terminated, these results will need to be saved locally.
-
-## Saving Results:
-1. To backup the whole database, including the results from the completed run, please run the following command in terminal after changing the save path and database name:
-
-```
-   $ docker exec <container_id> pg_dumpall -U postgres > '/../path_to_save_directory/dwind_db.sql'
-```
-
-- This `.sql` file can be restored in the same way as was detailed above. 
-
-2. To export just the "agent_outputs" table, simply right click on this table in PgAdmin and select the "Import/Export" option and configure how you want the data to be saved. Note, if a save directory isn't specified this will likely save in the home directory.
