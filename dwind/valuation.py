@@ -30,7 +30,9 @@ from dwind.config import (
     IncentiveScenario,
 )
 
+
 log = logging.getLogger("dwfs")
+
 
 class ValueFunctions:
     """Primary model calculation engine responsible for the computation of individual agents."""
@@ -91,8 +93,8 @@ class ValueFunctions:
         if "solar" in self.config.project.settings.TECHS:
             self.pv_price_inputs = _load_csv(cost_dir / self.config.cost.PV_PRICE_INPUT_TABLE)
             self.pv_tech_inputs = _load_csv(cost_dir / self.config.cost.PV_TECH_INPUT_TABLE)
-            self.pv_plus_batt_price_inputs = _load_csv(cost_dir /
-                self.config.cost.PV_PLUS_BATT_PRICE_INPUT_TABLE
+            self.pv_plus_batt_price_inputs = _load_csv(
+                cost_dir / self.config.cost.PV_PLUS_BATT_PRICE_INPUT_TABLE
             )
 
         self.batt_price_inputs = _load_csv(cost_dir / self.config.cost.BATT_PRICE_INPUT_TABLE)
@@ -283,8 +285,6 @@ class ValueFunctions:
         tech = Technology(tech)
         itc_fraction_of_capex = self.FINANCIAL_INPUTS["FOM"]["itc_fraction_of_capex"]
         df = df.assign(
-            yr=self.year.value,
-            cambium_scenario=self.CAMBIUM_SCENARIO,
             analysis_period=self.FINANCIAL_INPUTS["FOM"]["system_lifetime"],
             debt_option=self.FINANCIAL_INPUTS["FOM"]["debt_option"],
             debt_percent=self.FINANCIAL_INPUTS["FOM"]["debt_percent"] * 100,
@@ -439,7 +439,7 @@ def calc_financial_performance_fom(capex_usd_p_kw: float, row: pd.Series, financ
     financial.SystemCosts.total_installed_cost = system_costs
     financial.FinancialParameters.construction_financing_cost = system_costs * 0.009
 
-    financial.execute(1)
+    financial.execute()
 
     return financial.Outputs.project_return_aftertax_npv
 
@@ -503,25 +503,26 @@ def fetch_cambium_values(
             and value, in $/MW.
     """
     # read processed cambium dataframe from pickle
-    cambium_f = cambium_dir / f"{row['cambium_scenario']}_pca_{row['yr']}_processed.pqt"
-    cambium_df = pd.read_parquet(cambium_f, dtype_backend="pyarrow")
+    # cambium_f = cambium_dir / f"{row['cambium_scenario']}_pca_{row['yr']}_processed.pqt"
+    # cambium_df = pd.read_parquet(cambium_f, dtype_backend="pyarrow")
 
-    cambium_df["year"] = cambium_df["year"].astype(str)
-    cambium_df["pca"] = cambium_df["pca"].astype(str)
-    cambium_df["variable"] = cambium_df["variable"].astype(str)
+    # cambium_df["year"] = cambium_df["year"].astype(str)
+    # cambium_df["pca"] = cambium_df["pca"].astype(str)
+    # cambium_df["variable"] = cambium_df["variable"].astype(str)
 
-    # filter on pca, desired year, cambium variable
-    mask = (
-        (cambium_df["year"] == str(row["yr"]))
-        & (cambium_df["pca"] == str(row["ba"]))
-        & (cambium_df["variable"] == cambium_value)
-    )
+    # # filter on pca, desired year, cambium variable
+    # mask = (
+    #     (cambium_df["year"] == str(row["yr"]))
+    #     & (cambium_df["pca"] == str(row["ba"]))
+    #     & (cambium_df["variable"] == cambium_value)
+    # )
 
-    cambium_output = cambium_df[mask]
-    cambium_output = cambium_output.reset_index(drop=True)
-    cambium_output = cambium_output["value"].values[0]
+    # cambium_output = cambium_df[mask]
+    # cambium_output = cambium_output.reset_index(drop=True)
+    # cambium_output = cambium_output["value"].values[0]
 
     # duplicate gen and cambium_output * analysis_period
+    cambium_output = row['cambium_value']
     analysis_period = row["analysis_period"]
     generation_hourly = list(generation_hourly) * analysis_period
     cambium_output = list(cambium_output) * analysis_period
@@ -1384,7 +1385,7 @@ def process_btm(
 
     # Execute utility rate module
     utilityrate.Load.load = consumption_hourly
-    utilityrate.execute(1)
+    utilityrate.execute()
 
     # Process payment incentives
     # TODO: apply incentives?
@@ -1411,7 +1412,7 @@ def process_btm(
     row["additional_pysam_outputs"] = {k: getattr(loan.Outputs, k) for k in pysam_outputs}
 
     # run root finding algorithm to find breakeven cost based on calculated NPV
-    #out, _ = find_breakeven(
+    # out, _ = find_breakeven(
     #    row=row,
     #    loan=loan,
     #    pysam_outputs=pysam_outputs,
@@ -1419,7 +1420,7 @@ def process_btm(
     #    method="newton",
     #    pre_calc_bounds_and_tolerances=False,
     #    **{"x0": 10000.0, "full_output": True},
-    #)
+    # )
     #
     row["breakeven_cost_usd_p_kw"] = None
 
@@ -1570,13 +1571,13 @@ def process_fom(
         row["additional_pysam_outputs"] = {k: getattr(financial.Outputs, k) for k in pysam_outputs}
 
         # run root finding algorithm to find breakeven cost based on calculated NPV
-        #out, _ = find_breakeven_fom(
+        # out, _ = find_breakeven_fom(
         #    row=row,
         #    financial=financial,
         #    pysam_outputs=pysam_outputs,
         #    pre_calc_bounds_and_tolerances=False,
         #    **{"method": "newton", "x0": 10000.0, "full_output": True},
-        #)
+        # )
         row["breakeven_cost_usd_p_kw"] = None
 
     return row

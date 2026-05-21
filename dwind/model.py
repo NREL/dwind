@@ -296,6 +296,8 @@ class Model:
 
         # filter by sector
         self.agents = self.agents[self.agents["application"].isin(apps)]
+        self.CAMBIUM_SCENARIO = scenarios.config_cambium(self.scenario)
+        self.agents = self.agents.assign(yr=self.year.value, cambium_scenario=self.CAMBIUM_SCENARIO)
 
     def _init_logging(self):
         """Initialize the logging to :py:attr:`out_path` "/logs/dwfs.txt"."""
@@ -426,6 +428,27 @@ class Model:
                     (self.agents[col] > self.agents["nem_system_kw_limit"]), "compensation_style"
                 ] = "net billing"
 
+    def _get_cambium(self):
+        cambium_f = (
+            self.config.project.settings.CAMBIUM_DATA_DIR
+            / f"{self.CAMBIUM_SCENARIO}_pca_{self.year.value}_processed.pqt"
+        )
+        cambium_df = pd.read_parquet(cambium_f, dtype_backend="pyarrow")
+
+        cambium_df["year"] = cambium_df["year"].astype(int)
+        cambium_df["pca"] = cambium_df["pca"].astype(str)
+        cambium_df["variable"] = cambium_df["variable"].astype(str)
+        cambium_df = cambium_df[
+            cambium_df["variable"] == self.config.project.settings.CAMBIUM_VALUE
+        ]
+        cambium_df = cambium_df.rename(columns={"value": "cambium_value"})[
+            ["pca", "year", "cambium_value"]
+        ]
+
+        self.agents = self.agents.merge(
+            cambium_df, left_on=["ba", "yr"], right_on=["pca", "year"], how="left"
+        )
+
     def prepare_agents(self):
         """Prepare the :py:attr:`tech`- and :py:attr:`sector`-specific agent data."""
         if self.sector is Sector.BTM:
@@ -484,6 +507,8 @@ class Model:
                     self.agents["wind_aep_fom"] = (
                         self.agents["wind_naep"] * self.agents["wind_size_kw_fom"]
                     )
+
+            self._get_cambium()
 
     def run_valuation(self):
         """Runs the valuation model to create the PySAM financial results."""
