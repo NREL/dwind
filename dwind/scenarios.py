@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from dwind.config import Year, Scenario, IncentiveScenario, Configuration
+from dwind.config import Year, Scenario, Configuration, IncentiveScenario
 
 
 def config_nem(scenario: Scenario, year: Year) -> str:
@@ -51,6 +51,7 @@ def config_costs(scenario: Scenario, year: Year, config: Configuration) -> dict:
     Args:
         scenario (:py:class:`dwind.config.Scenario`): Valid :py:class:`dwind.config.Scenario`.
         year (:py:class:`dwind.config.Year`): Valid :py:class:`dwind.config.Year`.
+        config (dwind.config.Configuration): Model configuration with universal settings.
 
     Returns:
         dict: Dictionary of ATB assumptions to be used for PySAM's cost inputs.
@@ -139,7 +140,9 @@ def config_performance(scenario: Scenario, year: Year) -> pd.DataFrame:
     return performance_inputs
 
 
-def config_financial(scenario: Scenario, inc_scenario: IncentiveScenario, year: Year, config: Configuration) -> dict:
+def config_financial(
+    scenario: Scenario, inc_scenario: IncentiveScenario, year: Year, config: Configuration
+) -> dict:
     """Loads the financial configuration based on the ATB analysis.
 
     Args:
@@ -147,6 +150,7 @@ def config_financial(scenario: Scenario, inc_scenario: IncentiveScenario, year: 
         inc_scenario (:py:class:`dwind.config.IncentiveScenario`): Valid
             :py:class:`dwind.config.IncentiveScenario`.
         year (:py:class:`dwind.config.Year`): Valid :py:class:`dwind.config.Year`.
+        config (dwind.config.Configuration): Model configuration with universal settings.
 
     Returns:
         dict: Dictionary of ATB assumptions to be used for configuration PySAM.
@@ -154,7 +158,9 @@ def config_financial(scenario: Scenario, inc_scenario: IncentiveScenario, year: 
     cost_dir = Path(__file__).resolve().parent.parent / "data"
     if year is Year._2025:
         f = cost_dir / f"ATB24_financing_baseline_{year}.json"
-        incentives = pd.read_parquet(f"{config.incentives.DIR}/{config.incentives.TABLE}", dtype_backend="pyarrow")
+        incentives = pd.read_parquet(
+            f"{config.incentives.DIR}/{config.incentives.TABLE}", dtype_backend="pyarrow"
+        )
     elif year in (Year._2035, Year._2040):
         f = cost_dir / "ATB24_financing_baseline_2035.json"
     else:
@@ -167,8 +173,6 @@ def config_financial(scenario: Scenario, inc_scenario: IncentiveScenario, year: 
 
     # TODO: determine if shared settings is applicable going forward, or separate should be reserved
     if year == 2025:
-        if inc_scenario is IncentiveScenario.NOINCENTIVES:
-            incentives["applicable_credit"] = 0.0
         financials["BTM"]["itc_fraction_of_capex"] = incentives
         financials["FOM"]["itc_fraction_of_capex"] = incentives
         financials["FOM"]["ptc_fed_dlrs_per_kwh"]["solar"] = 0.0

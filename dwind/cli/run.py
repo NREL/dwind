@@ -113,7 +113,6 @@ def hpc(
     from dwind.mp import MultiProcess
 
     # NOTE: collect_by_priority has been removed but may need to be reinstated
-
     mp = MultiProcess(
         location=location,
         sector=sector,
@@ -150,6 +149,7 @@ def hpc(
             sector=Sector(sector),
             dir_out=dir_out,
             file_name=run_name,
+            model_config=model_config,
             remove_results_chunks=remove_results_chunks,
         )
 
@@ -284,7 +284,7 @@ def chunk(
     from dwind.model import Model
 
     agent_file = Path(out_path).resolve() / f"agent_chunks/agents_{chunk_ix}.pqt"
-    agents = utils.load_agents(file_name=agent_file, prepare=False)
+    agents = utils.load_agents(file_name=agent_file, model_config=model_config, prepare=False)
 
     model = Model(
         agents=agents,

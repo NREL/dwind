@@ -9,9 +9,11 @@ import typer
 import pandas as pd
 
 from dwind.cli import utils
-from dwind.config import Sector
+from dwind.config import Sector, Configuration
+
 
 app = typer.Typer()
+
 
 @app.command()
 def combine_chunks(
@@ -26,6 +28,9 @@ def combine_chunks(
     ],
     sector: Annotated[
         Sector, typer.Argument(help="One of fom (front of meter) or btm (back-of-the-meter).")
+    ],
+    model_config: Annotated[
+        str, typer.Argument(help="Complete file name and path of the model configuration file")
     ],
     file_name: Annotated[
         Optional[str],  # noqa
@@ -51,6 +56,7 @@ def combine_chunks(
     dir_out = Path.cwd() if dir_out is None else Path(dir_out).resolve()
     out_path = dir_out / "chunk_files"
     result_files = [f for f in out_path.iterdir() if f.suffix == (".pqt")]
+    model_config = Configuration(model_config)
 
     if len(result_files) == 0:
         print(f"No chunked results found in: {out_path}.")
@@ -59,7 +65,7 @@ def combine_chunks(
     file_name = "results" if file_name is None else file_name
     result_agents = pd.concat([pd.read_parquet(f) for f in result_files])
     load_df = pd.read_csv(
-        f"{self.config.load.DIR}/{self.config.load.LANDUSE}",
+        f"{model_config.load.DIR}/{model_config.load.LANDUSE}",
         usecols=["land_use", "application"],
     )
     result_agents.drop(columns="application").merge(load_df, on="land_use", how="left")
