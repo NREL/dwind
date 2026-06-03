@@ -1,5 +1,9 @@
 # Changelog
 
+## 3 June 2026
+
+- Fix bugs from hackathon (file paths, breakeven calculations)
+
 ## v0.4.1 - 28 April 2026
 
 - Fixes a typo in the new GitHub repository's name.
