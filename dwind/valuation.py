@@ -1419,17 +1419,17 @@ def process_btm(
     row["additional_pysam_outputs"] = {k: getattr(loan.Outputs, k) for k in pysam_outputs}
 
     # run root finding algorithm to find breakeven cost based on calculated NPV
-    # out, _ = find_breakeven(
-    #    row=row,
-    #    loan=loan,
-    #    pysam_outputs=pysam_outputs,
-    #    batt_costs=batt_costs,
-    #    method="newton",
-    #    pre_calc_bounds_and_tolerances=False,
-    #    **{"x0": 10000.0, "full_output": True},
-    # )
-    #
-    row["breakeven_cost_usd_p_kw"] = None
+    out, _ = find_breakeven(
+        row=row,
+        loan=loan,
+        pysam_outputs=pysam_outputs,
+        batt_costs=batt_costs,
+        method="newton",
+        pre_calc_bounds_and_tolerances=False,
+        **{"x0": 10000.0, "full_output": True},
+    )
+
+    row["breakeven_cost_usd_p_kw"] = out
 
     return row
 
