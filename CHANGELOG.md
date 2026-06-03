@@ -1,6 +1,6 @@
 # Changelog
 
-## 3 June 2026
+## v0.5 - 3 June 2026
 
 - Fix bugs from hackathon (file paths, breakeven calculations)
 
