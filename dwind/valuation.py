@@ -30,7 +30,9 @@ from dwind.config import (
     IncentiveScenario,
 )
 
+
 log = logging.getLogger("dwfs")
+
 
 class ValueFunctions:
     """Primary model calculation engine responsible for the computation of individual agents."""
@@ -73,7 +75,7 @@ class ValueFunctions:
     def load(self):
         """Loads all the core data from CSVs for configuring PySAM."""
         _load_csv = functools.partial(loader.load_df, year=self.year)
-        cost_dir = pathlib.Path(__file__).resolve().parent.parent / "data"
+        cost_dir = self.config.cost.DIR
 
         self.retail_rate_inputs = _load_csv(cost_dir / self.config.cost.RETAIL_RATE_INPUT_TABLE)
         self.wholesale_rate_inputs = _load_csv(
@@ -91,8 +93,8 @@ class ValueFunctions:
         if "solar" in self.config.project.settings.TECHS:
             self.pv_price_inputs = _load_csv(cost_dir / self.config.cost.PV_PRICE_INPUT_TABLE)
             self.pv_tech_inputs = _load_csv(cost_dir / self.config.cost.PV_TECH_INPUT_TABLE)
-            self.pv_plus_batt_price_inputs = _load_csv(cost_dir /
-                self.config.cost.PV_PLUS_BATT_PRICE_INPUT_TABLE
+            self.pv_plus_batt_price_inputs = _load_csv(
+                cost_dir / self.config.cost.PV_PLUS_BATT_PRICE_INPUT_TABLE
             )
 
         self.batt_price_inputs = _load_csv(cost_dir / self.config.cost.BATT_PRICE_INPUT_TABLE)
@@ -239,7 +241,10 @@ class ValueFunctions:
 
         if self.year == 2025:
             df = df.set_index("census_tract_id", drop=False).join(incentives).reset_index(drop=True)
-            df["itc_fraction_of_capex"] = df.applicable_credit.fillna(0.3)
+            if self.inc_scenario is IncentiveScenario.NOINCENTIVES:
+                df["itc_fraction_of_capex"] = 0.0
+            else:
+                df["itc_fraction_of_capex"] = df.applicable_credit.fillna(0.3)
 
         df = pd.merge(
             df,
@@ -323,7 +328,10 @@ class ValueFunctions:
             incentives = self.FINANCIAL_INPUTS["FOM"]["itc_fraction_of_capex"]
 
             df = df.set_index("census_tract_id", drop=False).join(incentives).reset_index(drop=True)
-            df.itc_fed_pct = df.applicable_credit.fillna(0.3)
+            if self.inc_scenario is IncentiveScenario.NOINCENTIVES:
+                df["itc_fed_pct"] = 0.0
+            else:
+                df["itc_fed_pct"] = df.applicable_credit.fillna(0.3)
 
         return df
 
@@ -439,7 +447,7 @@ def calc_financial_performance_fom(capex_usd_p_kw: float, row: pd.Series, financ
     financial.SystemCosts.total_installed_cost = system_costs
     financial.FinancialParameters.construction_financing_cost = system_costs * 0.009
 
-    financial.execute(1)
+    financial.execute()
 
     return financial.Outputs.project_return_aftertax_npv
 
@@ -1384,7 +1392,7 @@ def process_btm(
 
     # Execute utility rate module
     utilityrate.Load.load = consumption_hourly
-    utilityrate.execute(1)
+    utilityrate.execute()
 
     # Process payment incentives
     # TODO: apply incentives?
@@ -1411,17 +1419,17 @@ def process_btm(
     row["additional_pysam_outputs"] = {k: getattr(loan.Outputs, k) for k in pysam_outputs}
 
     # run root finding algorithm to find breakeven cost based on calculated NPV
-    #out, _ = find_breakeven(
-    #    row=row,
-    #    loan=loan,
-    #    pysam_outputs=pysam_outputs,
-    #    batt_costs=batt_costs,
-    #    method="newton",
-    #    pre_calc_bounds_and_tolerances=False,
-    #    **{"x0": 10000.0, "full_output": True},
-    #)
-    #
-    row["breakeven_cost_usd_p_kw"] = None
+    out, _ = find_breakeven(
+        row=row,
+        loan=loan,
+        pysam_outputs=pysam_outputs,
+        batt_costs=batt_costs,
+        method="newton",
+        pre_calc_bounds_and_tolerances=False,
+        **{"x0": 10000.0, "full_output": True},
+    )
+
+    row["breakeven_cost_usd_p_kw"] = out
 
     return row
 
@@ -1570,14 +1578,14 @@ def process_fom(
         row["additional_pysam_outputs"] = {k: getattr(financial.Outputs, k) for k in pysam_outputs}
 
         # run root finding algorithm to find breakeven cost based on calculated NPV
-        #out, _ = find_breakeven_fom(
-        #    row=row,
-        #    financial=financial,
-        #    pysam_outputs=pysam_outputs,
-        #    pre_calc_bounds_and_tolerances=False,
-        #    **{"method": "newton", "x0": 10000.0, "full_output": True},
-        #)
-        row["breakeven_cost_usd_p_kw"] = None
+        out, _ = find_breakeven_fom(
+            row=row,
+            financial=financial,
+            pysam_outputs=pysam_outputs,
+            pre_calc_bounds_and_tolerances=False,
+            **{"method": "newton", "x0": 10000.0, "full_output": True},
+        )
+        row["breakeven_cost_usd_p_kw"] = out
 
     return row
 
