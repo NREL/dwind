@@ -560,7 +560,10 @@ def process_tariff(utilityrate: ur5, row: pd.Series, net_billing_sell_rate: floa
         PySAM.Utilityrate5: Configured Utilityrate5 model.
     """
     # Monthly fixed charge [$]
-    utilityrate.ElectricityRates.ur_monthly_fixed_charge = row["ur_monthly_fixed_charge"]
+    try:
+        utilityrate.ElectricityRates.ur_monthly_fixed_charge = row["ur_monthly_fixed_charge"]
+    except Exception:
+        utilityrate.ElectricityRates.ur_monthly_fixed_charge = 0.0
 
     # Annual minimum charge [$]
     # not currently tracked in URDB rate attribute downloads
