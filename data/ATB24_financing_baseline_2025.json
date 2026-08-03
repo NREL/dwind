@@ -1,56 +1,56 @@
 {
-    "BTM": {
-        "economic_lifetime_yrs": 30,
-        "loan_term_yrs": 30,
-        "loan_interest_rate": 0.044,
-        "down_payment_fraction": 0.491,
-        "real_discount_rate": 0.073,
-        "tax_rate": 0.257,
-        "inflation_rate": 0.025,
-        "elec_price_escalator": 0.025,
-        "itc_fraction_of_capex": "",
-        "deprec_sch": {
-            "res": [
-                0.2,
-                0.32,
-                0.192,
-                0.1152,
-                0.1152,
-                0.0576
-            ],
-            "com": [
-                0.2,
-                0.32,
-                0.192,
-                0.1152,
-                0.1152,
-                0.0576
-            ],
-            "ind": [
-                0.2,
-                0.32,
-                0.192,
-                0.1152,
-                0.1152,
-                0.0576
-            ]
-        }
+  "BTM": {
+    "deprec_sch": {
+      "com": [
+        0.2,
+        0.32,
+        0.192,
+        0.1152,
+        0.1152,
+        0.0576
+      ],
+      "ind": [
+        0.2,
+        0.32,
+        0.192,
+        0.1152,
+        0.1152,
+        0.0576
+      ],
+      "res": [
+        0.2,
+        0.32,
+        0.192,
+        0.1152,
+        0.1152,
+        0.0576
+      ]
     },
-    "FOM": {
-        "system_lifetime": 30,
-        "inflation": 0.025,
-        "degradation": 0,
-        "rate_escalation": 0.025,
-        "interest_rate": 0.044,
-        "debt_option": 0,
-        "debt_percent": 0.509,
-        "dscr": 1.4,
-        "batt_cleared_derate": 0.97,
-        "discount_rate": 0.073,
-        "itc_fraction_of_capex": "",
-        "ptc_fed_dlrs_per_kwh": {
-            "solar": 0.003,
-            "wind": 0.003
-        }
-    }
+    "down_payment_fraction": 0.491,
+    "economic_lifetime_yrs": 30,
+    "elec_price_escalator": 0.025,
+    "inflation_rate": 0.025,
+    "itc_fraction_of_capex": "",
+    "loan_interest_rate": 0.044,
+    "loan_term_yrs": 30,
+    "real_discount_rate": 0.073,
+    "tax_rate": 0.257
+  },
+  "FOM": {
+    "batt_cleared_derate": 0.97,
+    "debt_option": 0,
+    "debt_percent": 0.509,
+    "degradation": 0,
+    "discount_rate": 0.073,
+    "dscr": 1.4,
+    "inflation": 0.025,
+    "interest_rate": 0.044,
+    "itc_fraction_of_capex": "",
+    "ptc_fed_dlrs_per_kwh": {
+      "solar": 0.003,
+      "wind": 0.003
+    },
+    "rate_escalation": 0.025,
+    "system_lifetime": 30
+  }
 }

@@ -19,6 +19,7 @@ app = typer.Typer()
 
 console = Console()
 
+
 @app.command()
 def job_summary(
     jobs: Annotated[list[str], typer.Argument(help="Job ID(s) to check for the final run status.")],

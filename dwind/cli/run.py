@@ -141,7 +141,7 @@ def hpc(
         utils.cleanup_chunks(dir_out, which="agents")
 
     if combine:
-        if incentives:
+        if incentives == IncentiveScenario.NOINCENTIVES:
             run_name = f"{location}_{sector}_{incentives}_{year}"
         else:
             run_name = f"{location}_{sector}_{scenario}_{year}"

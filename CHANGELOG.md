@@ -1,9 +1,14 @@
 # Changelog
 
+## v0.5.1 - 1 August 2026
+
+- Minor bug fix for PySAM utility rate fixed charge.
+- Change output file naming convention to reflect incentive scenario.
+
 ## v0.5 - 3 June 2026
 
 - Fix bugs from hackathon (file paths, breakeven calculations)
-- Reinstantes the breakeven calculations for BTM and FOM.
+- Reinstates the breakeven calculations for BTM and FOM.
 
 ## v0.4.1 - 28 April 2026
 
