@@ -2,11 +2,13 @@
 data.
 """
 
+from pathlib import Path
+
 import h5py as h5
 import pandas as pd
 
 from dwind.config import Sector, Technology, Configuration
-from pathlib import Path
+
 
 class ResourcePotential:
     """Helper class designed to retrieve pre-calculated energy generation data from reV."""
@@ -146,7 +148,8 @@ class ResourcePotential:
         self.df = self.df.drop(columns=[c for c in drop_cols if c in self.df])
         k = f"{self.tech.value}_DIR"
         f_gen = (
-            f"{self.config.rev.generation[k]}/lkup_rev_gid_to_summary_{self.tech.value}_{self.year}.csv"
+            f"{self.config.rev.generation[k]}/"
+            f"lkup_rev_gid_to_summary_{self.tech.value}_{self.year}.csv"
         )
 
         if ("s3://" in f_gen) or Path(f_gen).exists():
