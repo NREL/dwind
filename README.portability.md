@@ -5,7 +5,7 @@ This readme describes how to run this code on different systems:
 ### UCAR derecho
 
 ```
-# on derecho	
+# on derecho
 module load conda
 git clone git clone https://github.com/NatLabRockies/dwind.git
 cd dwind
